@@ -55,12 +55,13 @@ function loginTry(payload) {
   };
 }
 
-// function badLogin(payload){
-//   return {
-//     type: "BAD_LOGIN",
-//     payload
-//   }
-// }
+function badLogin(payload) {
+  const { message } = payload;
+  return {
+    type: "BAD_LOGIN",
+    payload: message
+  };
+}
 
 export const login = data => dispatch => {
   request
@@ -70,7 +71,10 @@ export const login = data => dispatch => {
       const action = loginTry(response.body);
       dispatch(action);
     })
-    .catch(err => console.log(err));
+    .catch(err => {
+      const action = badLogin(err);
+      dispatch(action);
+    });
 };
 
 function signUpTry(payload) {
@@ -88,5 +92,8 @@ export const signUp = data => dispatch => {
       const action = signUpTry(response.body);
       dispatch(action);
     })
-    .catch(err => console.log(err));
+    .catch(err => {
+      const action = badLogin(err);
+      dispatch(action);
+    });
 };

@@ -1,11 +1,20 @@
-export default function(state = "", action = {}) {
+export default function(
+  state = {
+    user: "",
+    errors: ""
+  },
+  action = {}
+) {
   switch (action.type) {
     case "NEW_LOGIN": {
-      return action.payload;
+      console.log(action);
+      return { ...state, user: action.payload };
     }
     case "NEW_SIGNUP": {
-      console.log(action.payload);
       return state;
+    }
+    case "BAD_LOGIN": {
+      return { ...state, errors: action.payload };
     }
     default:
       return state;
