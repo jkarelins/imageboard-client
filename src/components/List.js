@@ -2,6 +2,7 @@ import React from "react";
 import CreateFormContainer from "./CreateFormContainer";
 import LoginFormContainer from "./LoginFormContainer";
 import SignUpFormContainer from "./SignUpFormContainer";
+
 class List extends React.Component {
   state = {
     login: true
@@ -30,7 +31,11 @@ class List extends React.Component {
           ) : (
             <div>
               <h4>SignUp:</h4>
-              {!this.props.jwt ? <SignUpFormContainer /> : ""}
+              {!this.props.jwt ? (
+                <SignUpFormContainer toSignUp={this.toSignUp} signUp="true" />
+              ) : (
+                ""
+              )}
               <button onClick={this.toSignUp}>To Sign In</button>
             </div>
           )}

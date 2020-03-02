@@ -18,7 +18,11 @@ export default class LoginForm extends Component {
               placeholder="Password"
               onChange={this.props.onChange}
             />
-            <input type="submit" value="Login" />
+            {this.props.signUp ? (
+              <input type="submit" value="Sign Up" />
+            ) : (
+              <input type="submit" value="Login" />
+            )}
           </form>
         </div>
       );

@@ -8,9 +8,8 @@ class SignUpFormContainer extends Component {
 
   onSubmit = event => {
     event.preventDefault();
-    // console.log(this.state);
     this.props.signUp(this.state);
-    this.setState({ email: "", password: "" });
+    this.props.toSignUp();
   };
 
   onChange = event => {
@@ -26,6 +25,7 @@ class SignUpFormContainer extends Component {
           onSubmit={this.onSubmit}
           onChange={this.onChange}
           values={this.state}
+          signUp={this.props.signUp}
         />
       </div>
     );
