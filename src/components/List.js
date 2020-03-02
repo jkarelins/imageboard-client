@@ -18,9 +18,9 @@ class List extends React.Component {
         <div>
           {this.state.login ? (
             <div>
-              <h4>Login:</h4>
               {!this.props.jwt ? (
                 <div>
+                  <h4>Login:</h4>
                   <LoginFormContainer />
                   <button onClick={this.toSignUp}>To Sign Up</button>
                 </div>

@@ -7,7 +7,6 @@ class ListContainer extends React.Component {
   componentDidMount() {
     this.props.getImages();
   }
-  componentDidUpdate() {}
   render() {
     if (this.props) {
       return (

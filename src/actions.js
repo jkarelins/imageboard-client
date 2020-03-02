@@ -4,8 +4,9 @@ export const ALL_IMAGES = "ALL_IMAGES";
 export const NEW_IMAGE = "NEW_IMAGE";
 export const NEW_LOGIN = "NEW_LOGIN";
 export const NEW_SIGNUP = "NEW_SIGNUP";
+export const ALL_USERS = "ALL_USERS";
 
-const baseUrl = "https://whispering-brushlands-89865.herokuapp.com";
+const baseUrl = "http://localhost:4000";
 
 function allImages(payload) {
   return {
@@ -36,7 +37,7 @@ function newImage(payload) {
 
 export const createImage = data => (dispatch, getState) => {
   const state = getState();
-  const { user } = state;
+  const { user } = state.user;
   request
     .post(`${baseUrl}/image`)
     .set("Authorization", `Bearer ${user.jwt}`)
@@ -96,4 +97,24 @@ export const signUp = data => dispatch => {
       const action = badLogin(err);
       dispatch(action);
     });
+};
+
+function allUsers(payload) {
+  return {
+    type: ALL_USERS,
+    payload
+  };
+}
+
+export const getUsers = () => (dispatch, getState) => {
+  const state = getState();
+  const { users } = state;
+  if (!users.length) {
+    request(`${baseUrl}/user`)
+      .then(response => {
+        const action = allUsers(response.body);
+        dispatch(action);
+      })
+      .catch(console.error);
+  }
 };
