@@ -48,9 +48,8 @@ class List extends React.Component {
               <img
                 src={image.url}
                 alt={image.title}
-                style={{ maxHeight: "250px", height: "auto" }}
-              ></img>{" "}
-              />
+                style={{ maxHeight: "250px", width: "auto" }}
+              ></img>
             </div>
           ))}
         </div>
