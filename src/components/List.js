@@ -45,7 +45,12 @@ class List extends React.Component {
           {this.props.images.map((image, index) => (
             <div key={index}>
               <h3>{image.title}</h3>
-              <img src={image.url} alt={image.title} />
+              <img
+                src={image.url}
+                alt={image.title}
+                style={{ maxHeight: "250px", height: "auto" }}
+              ></img>{" "}
+              />
             </div>
           ))}
         </div>
