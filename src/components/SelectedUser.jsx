@@ -1,16 +1,21 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import List from "./List";
+import { Link } from "react-router-dom";
+import ShowUser from "./ShowUser";
+import { getUsers } from "../actions";
 
 class SelectedUser extends Component {
+  componentDidMount(props) {
+    this.props.getUsers();
+  }
   render() {
-    console.log(this.props);
-    if (this.props) {
+    if (this.props.selectedUser) {
       return (
         <div>
+          <Link to="/">All Images</Link>
           <h1>{this.props.selectedUser.email}</h1>
           <div>
-            <List images={this.props.selectedUser.images} />
+            <ShowUser images={this.props.selectedUser.images} />
           </div>
         </div>
       );
@@ -26,4 +31,4 @@ function mapStateToProps(state, props) {
   };
 }
 
-export default connect(mapStateToProps)(SelectedUser);
+export default connect(mapStateToProps, { getUsers })(SelectedUser);

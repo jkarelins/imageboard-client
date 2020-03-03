@@ -2,6 +2,7 @@ import React from "react";
 import { getImages } from "../actions";
 import { connect } from "react-redux";
 import List from "./List";
+import { Link } from "react-router-dom";
 
 class ListContainer extends React.Component {
   componentDidMount() {
@@ -11,6 +12,7 @@ class ListContainer extends React.Component {
     if (this.props) {
       return (
         <div>
+          <Link to="/user">USERS</Link>
           <h3 style={{ color: "red" }}>
             {this.props.errors ? this.props.errors : ""}
           </h3>

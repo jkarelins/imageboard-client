@@ -3,15 +3,18 @@ import { Link } from "react-router-dom";
 
 export default class Users extends Component {
   render() {
-    console.log(this.props);
-    if (this.props) {
+    if (this.props.users) {
       return (
         <div>
-          {this.props.users.map((user, i) => (
-            <Link to={`/user/${i}`} key={i}>
-              {user.email}
-            </Link>
-          ))}
+          <ul>
+            {this.props.users.map((user, i) => (
+              <li>
+                <Link to={`/user/${i}`} key={i}>
+                  {user.email}
+                </Link>
+              </li>
+            ))}
+          </ul>
         </div>
       );
     } else {
